@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>TamizhPay Bank - Register</title>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="brand">TamizhPay Bank</div>
+    <div class="social-icons">
+        <a href="https://github.com/imsaravanan7" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/saravanan-m-a871a0290/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <div class="container">
+        <div class="welcome-msg">Create Your Account</div>
+
+        <form method="post" action="/register">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="User Name" required />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required />
+            </div>
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="ac-msg">
+            Already have an account? <a href="/login">Login here</a>
+        </p>
+
+        <!-- Error Message -->
+        <div th:if="${error}" class="alert">
+            User already present.
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    © 2025 TamizhPay Bank. Made with ❤️ in Tamil Nadu. |
+    <a href="#">Privacy</a> |
+    <a href="#">Terms</a>
+</footer>
+
+</body>
+</html>

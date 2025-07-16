@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Dashboard - TamizhPay Bank</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="brand">TamizhPay Bank</div>
+        <img th:src="@{/images/list-nested.svg}" class="hamburger" width="24px" height="24px">
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="nav-links-drop hide">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="dashboard-container">
+
+            <h2 th:text="'Welcome, ' + ${account.username}"></h2>
+            <h3 th:text="'Current Balance: ₹' + ${account.balance}"></h3>
+
+            <div class="account-details">
+                <h4>Account Details</h4>
+                <p><strong>Account Number:</strong> <span th:text="${account.accountNo}"></span></p>
+                <br>
+                <p><strong>Account Type:</strong> Savings</p>
+            </div>
+            <p class="text-success" th:if="${success}" th:text="${success}"></p>
+
+            <div class="action-section">
+                <!-- Deposit -->
+                <div class="action-box">
+                    <h4>Deposit</h4>
+                    <form method="post" action="/deposit">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="amount" required autocomplete="off" th:value="${depositAmount}"/>
+                        </div>
+                        <p class="error" th:if="${depositError}" th:text="${depositError}"></p>
+                        <button type="submit">Deposit</button>
+                    </form>
+                </div>
+
+                <!-- Withdraw -->
+                <div class="action-box">
+                    <h4>Withdraw</h4>
+                    <form method="post" action="/withdraw">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="amount" required  autocomplete="off" th:value="${withdrawAmount}"/>
+                        </div>
+                        <p class="error" th:if="${withdrawError}" th:text="${withdrawError}"></p>
+                        <button type="submit">Withdraw</button>
+                    </form>
+                </div>
+
+                <!-- Transfer -->
+                <div class="action-box">
+                    <h4>Transfer</h4>
+                    <form method="post" action="/transfer">
+                        <div class="form-group">
+                            <label>Recipient Username</label>
+                            <input type="text" name="toUsername" required  autocomplete="off" th:value="${toUsername}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Recipient Account No</label>
+                            <input type="text" name="toAccountNo" required  autocomplete="off" th:value="${toAccountNo}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="amount" required  autocomplete="off" th:value="${transferAmount}"/>
+                        </div>
+                        <p class="error" th:if="${transferError}" th:text="${transferError}"></p>
+                        <button type="submit">Transfer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 TamizhPay Bank. Made with ❤️ in Tamil Nadu. |
+        <a href="#">Privacy</a> |
+        <a href="#">Terms</a>
+    </footer>
+</body>
+<script th:src="@{/js/index.js}"></script>
+</html>

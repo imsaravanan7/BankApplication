@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Transaction History - TamizhPay Bank</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="brand">TamizhPay Bank</div>
+        <img th:src="@{/images/list-nested.svg}" class="hamburger" width="24px" height="24px">
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="nav-links-drop hide">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h2>Transaction History</h2>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction, iterStat : ${transactions}">
+                    <td data-label="ID" th:text="${iterStat.index + 1}"></td>
+                    <td data-label="Type" th:text="${transaction.type}"></td>
+                    <td data-label="Amount"
+                        th:text="${transaction.type.contains('Transfer In') || transaction.type == 'Deposit'} ? '+₹' + ${transaction.amount} : '-₹' + ${transaction.amount}"
+                        th:classappend="${transaction.type.contains('Transfer In') || transaction.type == 'Deposit'} ? 'text-success' : 'text-danger'">
+                    </td>
+                    <td data-label="Date" th:text="${#temporals.format(transaction.timestamp, 'dd MMMM, yyyy h:mm a')}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a href="/dashboard" class="custom-link">← Back to Dashboard</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 TamizhPay Bank. Made with ❤️ in Tamil Nadu. |
+        <a href="#">Privacy</a> |
+        <a href="#">Terms</a>
+    </footer>
+</body>
+<script th:src="@{/js/index.js}"></script>
+</html>
+
