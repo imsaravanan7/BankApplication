@@ -7,7 +7,7 @@ A simple and secure banking web application developed using **Spring Boot**, **S
 ![Login Page](screenshots/login.png)
 ![Register](screenshots/register.png)
 ![Dashboard](screenshots/dashboard.png)
-![Transactions](screenshots/transaction.png)
+![Transactions](screenshots/transactions.png)
 
 ## 🚀 Features
 
