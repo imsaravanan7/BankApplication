@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Dashboard - TamizhPay Bank</title>
 </head>
@@ -12,12 +13,12 @@
         <div class="brand">TamizhPay Bank</div>
         <img th:src="@{/images/list-nested.svg}" class="hamburger" width="24px" height="24px">
         <div class="nav-links">
-            <a href="/dashboard">Dashboard</a>
+            <a href="/">Home</a>
             <a href="/transactions">Transactions</a>
             <a href="/logout">Logout</a>
         </div>
         <div class="nav-links-drop hide">
-            <a href="/dashboard">Dashboard</a>
+            <a href="/">Home</a>
             <a href="/transactions">Transactions</a>
             <a href="/logout">Logout</a>
         </div>
@@ -45,10 +46,10 @@
                     <form method="post" action="/deposit">
                         <div class="form-group">
                             <label>Amount</label>
-                            <input type="number" name="amount" required autocomplete="off" th:value="${depositAmount}"/>
+                            <input type="number" name="amount" class="restrictInput" required autocomplete="off" th:value="${depositAmount}"/>
                         </div>
                         <p class="error" th:if="${depositError}" th:text="${depositError}"></p>
-                        <button type="submit">Deposit</button>
+                        <button type="submit" class="button">Deposit</button>
                     </form>
                 </div>
 
@@ -58,10 +59,10 @@
                     <form method="post" action="/withdraw">
                         <div class="form-group">
                             <label>Amount</label>
-                            <input type="number" name="amount" required  autocomplete="off" th:value="${withdrawAmount}"/>
+                            <input type="number" name="amount" class="restrictInput" required  autocomplete="off" th:value="${withdrawAmount}"/>
                         </div>
                         <p class="error" th:if="${withdrawError}" th:text="${withdrawError}"></p>
-                        <button type="submit">Withdraw</button>
+                        <button type="submit" class="button">Withdraw</button>
                     </form>
                 </div>
 
@@ -71,18 +72,18 @@
                     <form method="post" action="/transfer">
                         <div class="form-group">
                             <label>Recipient Username</label>
-                            <input type="text" name="toUsername" required  autocomplete="off" th:value="${toUsername}"/>
+                            <input type="text" name="toUsername" class="restrictInput" required  autocomplete="off" th:value="${toUsername}"/>
                         </div>
                         <div class="form-group">
                             <label>Recipient Account No</label>
-                            <input type="text" name="toAccountNo" required  autocomplete="off" th:value="${toAccountNo}"/>
+                            <input type="text" name="toAccountNo" class="restrictInput" required  autocomplete="off" th:value="${toAccountNo}"/>
                         </div>
                         <div class="form-group">
                             <label>Amount</label>
-                            <input type="number" name="amount" required  autocomplete="off" th:value="${transferAmount}"/>
+                            <input type="number" name="amount" class="restrictInput" required  autocomplete="off" th:value="${transferAmount}"/>
                         </div>
                         <p class="error" th:if="${transferError}" th:text="${transferError}"></p>
-                        <button type="submit">Transfer</button>
+                        <button type="submit" class="button">Transfer</button>
                     </form>
                 </div>
             </div>
@@ -91,7 +92,9 @@
 
     <!-- Footer -->
     <footer>
-        © 2025 TamizhPay Bank. Made with ❤️ in Tamil Nadu. |
+        © 2025 SARAVANAN M. Made with ❤️ in Tamil Nadu.<br>
+        <a href="https://github.com/imsaravanan7" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/saravanan-im/" target="_blank">LinkedIn</a> |
         <a href="#">Privacy</a> |
         <a href="#">Terms</a>
     </footer>

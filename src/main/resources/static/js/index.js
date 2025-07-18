@@ -19,4 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
             navLinkDrop.classList.add("hide");
         });
     }
+
+    // Restrict input to max 10 characters
+    document.querySelectorAll(".restrictInput").forEach(function (input) {
+        input.addEventListener("input", function () {
+            this.value = this.value.slice(0, 10);
+        });
+    });
 });

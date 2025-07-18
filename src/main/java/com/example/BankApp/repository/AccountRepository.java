@@ -15,7 +15,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Boolean existsByAccountNo(Long accountNo);
 
     @Query(nativeQuery = true,
-            value = "select * from where accountNo =:accountNo and username =:username")
+            value = "select * from account where account_no =:accountNo and username =:username")
     Optional<Account> findByAcNoAndUsername(
             @Param("accountNo") Long accountNo, @Param("username") String username
     );

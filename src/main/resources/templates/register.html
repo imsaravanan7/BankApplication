@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>TamizhPay Bank - Register</title>
 </head>
@@ -16,7 +17,7 @@
         <a href="https://github.com/imsaravanan7" target="_blank" title="GitHub">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/saravanan-m-a871a0290/" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/saravanan-im/" target="_blank" title="LinkedIn">
             <i class="fab fa-linkedin"></i>
         </a>
     </div>
@@ -24,17 +25,17 @@
 
 <!-- Main Content -->
 <main>
-    <div class="container">
+    <div class="container register">
         <div class="welcome-msg">Create Your Account</div>
 
         <form method="post" action="/register">
             <div class="form-group">
-                <input type="text" name="username" placeholder="User Name" required />
+                <input type="text" name="username" class="restrictInput" placeholder="User Name" required />
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Password" required />
+                <input type="password" name="password" class="restrictInput" placeholder="Password" required />
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" class="button">Register</button>
         </form>
 
         <p class="ac-msg">
@@ -42,7 +43,7 @@
         </p>
 
         <!-- Error Message -->
-        <div th:if="${error}" class="alert">
+        <div th:if="${registerError}" class="alert">
             User already present.
         </div>
     </div>
@@ -50,10 +51,13 @@
 
 <!-- Footer -->
 <footer>
-    © 2025 TamizhPay Bank. Made with ❤️ in Tamil Nadu. |
+    © 2025 SARAVANAN M. Made with ❤️ in Tamil Nadu.<br>
+    <a href="https://github.com/imsaravanan7" target="_blank">GitHub</a> |
+    <a href="https://www.linkedin.com/in/saravanan-im/" target="_blank">LinkedIn</a> |
     <a href="#">Privacy</a> |
     <a href="#">Terms</a>
 </footer>
 
 </body>
+<script th:src="@{/js/index.js}"></script>
 </html>

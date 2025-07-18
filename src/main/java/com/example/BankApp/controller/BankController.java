@@ -25,6 +25,15 @@ public class BankController {
         return "dashboard";
     }
 
+    @GetMapping("/")
+    public String showHomePage(Model model) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountService.findAccountByUsername(username);
+
+        model.addAttribute("account", account);
+        return "home"; // This matches dashboard.html
+    }
+
     @GetMapping("/register")
     public String showRegistrationForm() {
         return "register";

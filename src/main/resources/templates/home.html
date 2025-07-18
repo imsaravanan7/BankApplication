@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Dashboard - TamizhPay Bank</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="brand">TamizhPay Bank</div>
+        <img th:src="@{/images/list-nested.svg}" class="hamburger" width="24px" height="24px">
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="nav-links-drop hide">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/transactions">Transactions</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Home -->
+    <main>
+        <div class="container home">
+            <h2>Welcome, <span th:text="${#authentication.name}">User</span>!</h2>
+
+            <div class="account-info">
+                <h3>Account Summary</h3>
+                <p><strong>Account Number:</strong> <span th:text="${account.accountNo}">1234567890</span></p>
+                <p><strong>Account Holder:</strong> <span th:text="${account.username}">Saravanan</span></p>
+                <p><strong>Balance:</strong> ₹<span th:text="${account.balance}">10000</span></p>
+            </div>
+
+            <div class="actions">
+                <a href="/dashboard" class="link">Dashboard</a>
+                <a href="/transactions" class="link">Transactions</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 SARAVANAN M. Made with ❤️ in Tamil Nadu.<br>
+        <a href="https://github.com/imsaravanan7" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/saravanan-im/" target="_blank">LinkedIn</a> |
+        <a href="#">Privacy</a> |
+        <a href="#">Terms</a>
+    </footer>
+</body>
+<script th:src="@{/js/index.js}"></script>
+</html>
