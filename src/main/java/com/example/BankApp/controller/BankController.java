@@ -1,11 +1,16 @@
 package com.example.BankApp.controller;
 
+import com.example.BankApp.dto.RegisterRequest;
 import com.example.BankApp.model.Account;
 import com.example.BankApp.service.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,6 +22,23 @@ public class BankController {
     @Autowired
     private AccountService accountService;
 
+    @GetMapping("/")
+    public String handleRootPage(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)) {
+            // User is logged in
+            String username = authentication.getName();
+            Account account = accountService.findAccountByUsername(username);
+            model.addAttribute("account", account);
+            return "home"; // show home page
+        } else {
+            // Not logged in
+            return "welcome";
+        }
+    }
+
+
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -25,31 +47,26 @@ public class BankController {
         return "dashboard";
     }
 
-    @GetMapping("/")
-    public String showHomePage(Model model) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Account account = accountService.findAccountByUsername(username);
-
-        model.addAttribute("account", account);
-        return "home"; // This matches dashboard.html
-    }
-
     @GetMapping("/register")
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("registerRequest", new RegisterRequest());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerAccount(@RequestParam String username,
-                                  @RequestParam String password,
+    public String registerAccount(@Valid @ModelAttribute("registerRequest") RegisterRequest registerRequest,
+                                  BindingResult result,
                                   RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "register";
+        }
+
         try {
-            accountService.registerAccount(username, password);
+            accountService.registerAccount(registerRequest.getUsername(), registerRequest.getPassword());
             redirectAttributes.addFlashAttribute("success", "Registration successful! Please login.");
             return "redirect:/login";
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("registerError", e.getMessage());
-            redirectAttributes.addFlashAttribute("regUsername", username);
             return "redirect:/register";
         }
     }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Welcome to TamizhPay Bank</title>
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <div class="brand">TamizhPay Bank</div>
+    <img th:src="@{/images/list-nested.svg}" class="hamburger" width="24px" height="24px">
+    <div class="nav-links">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </div>
+    <div class="nav-links-drop hide">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </div>
+</nav>
+
+<!-- Home -->
+<!-- Home -->
+<main>
+    <div class="container home">
+        <h2>Welcome to TamizhPay Bank!</h2>
+        <p>Experience seamless and secure banking made for you.</p>
+
+        <!-- New Section: Features -->
+        <div class="intro-msg">
+            <h3>Why Choose TamizhPay?</h3>
+            <ul>
+                <li>🔐 Secure and encrypted transactions</li>
+                <li>⚡ Instant deposits and transfers</li>
+                <li>📈 Real-time account monitoring</li>
+                <li>📱 Simple, mobile-friendly interface</li>
+                <li>🧑‍💻 Built with modern technology for modern users</li>
+            </ul>
+        </div>
+
+        <!-- New Section: How it Works -->
+        <div class="explain">
+            <h3>How it Works</h3>
+            <p>1. Register for a free account<br>
+               2. Login to your dashboard<br>
+               3. Deposit, manage, and track your funds with ease<br>
+               4. View your transaction history anytime</p>
+        </div>
+
+        <!-- Call to Action Buttons -->
+        <div class="actions">
+            <a href="/register" class="link">Create an Account</a>
+            <a href="/login" class="link">Login</a>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    © 2025 SARAVANAN M. Made with ❤️ in Tamil Nadu.<br>
+    <a href="https://github.com/imsaravanan7" target="_blank">GitHub</a> |
+    <a href="https://www.linkedin.com/in/saravanan-im/" target="_blank">LinkedIn</a> |
+    <a href="#">Privacy</a> |
+    <a href="#">Terms</a>
+</footer>
+</body>
+<script th:src="@{/js/index.js}"></script>
+</html>

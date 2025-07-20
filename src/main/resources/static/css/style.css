@@ -41,10 +41,6 @@ nav .hamburger {
     cursor: pointer;
 }
 
-nav .social-icons {
-    margin-top: 10px;
-}
-
 nav .social-icons a {
     color: #fff;
     margin: 0 10px;
@@ -330,7 +326,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 14px;
     margin: 10px 0px;
     font-weight: 500;
-    text-align: center;
+    text-align: justify;
 }
 
 .ac-msg a {
@@ -353,6 +349,15 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     margin-bottom: 30px;
+}
+
+.account-info {
+    text-align: justify;
+}
+
+.account-info p {
+    max-width: 230px;
+    margin: 10px auto 0;
 }
 
 .action-section {
@@ -411,6 +416,44 @@ footer a {
     color: #4b0082;
     margin: 5px;
     text-decoration: none;
+}
+
+.container.home {
+    padding: 40px 20px;
+    max-width: 480px;
+}
+
+.container.home h3 {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #5e3ea1;
+}
+
+.intro-msg ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.intro-msg li {
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 20px;
+    position: relative;
+}
+
+.intro-msg li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #4b0082;
+    font-weight: bold;
+}
+
+.explain p {
+    text-align: left;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
 .custom-link:hover,
